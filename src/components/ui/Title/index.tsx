@@ -1,7 +1,8 @@
+type TitleProps = { title?: string }
 
-const Title: React.FC = () => {
+const Title= ({ title }: TitleProps) => {
     return (
-        <h1>TS App from scratch</h1>
+        <h1>{title}</h1>
     )
 }
 

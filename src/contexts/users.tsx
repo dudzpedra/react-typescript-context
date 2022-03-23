@@ -7,7 +7,7 @@ interface UserContextData {
 
 export interface User {
   fullname: string;
-  age: string;
+  age: number;
 }
 
 const DEFAULT_VALUE = {

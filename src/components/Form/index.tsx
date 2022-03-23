@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { User, useUsersContext } from "../../contexts/users";
+import UIButton from "../ui/UIButton";
 import styles from "./Form.module.css";
 
 const Form: React.FC = () => {
   const [fullname, setFullname] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(0);
   const [errorMsg, setErrorMsg] = useState('')
   const [successMsg, setSuccessMsg] = useState('')
   const { users, setUsers } = useUsersContext();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    if (fullname.length > 0 && age.length) {
+    if (fullname.length > 0 && age > 0) {
       const newUser: User = {
         fullname,
         age,
@@ -19,11 +20,11 @@ const Form: React.FC = () => {
       setSuccessMsg('New person added successfully.')
       setUsers(users.concat(newUser));
       setFullname("");
-      setAge("");
+      setAge(0);
       setErrorMsg('')
       setTimeout(() => setSuccessMsg(''), 2000)
     } else {
-        setErrorMsg('You must provide fullname and age')
+        setErrorMsg('You must provide fullname and valid age')
         setTimeout(() => setErrorMsg(''), 3000)
     }
   };
@@ -44,11 +45,11 @@ const Form: React.FC = () => {
         id="age"
         placeholder="Age"
         value={age}
-        onChange={({ target }) => setAge(target.value)}
+        onChange={({ target }) => setAge(Number(target.value))}
       />
       {errorMsg && <p className={styles.error}>{errorMsg}</p>}
       {successMsg && <p className={styles.success}>{successMsg}</p>}
-      <button type="submit">Send</button>
+      <UIButton label="Send" />
     </form>
   );
 };

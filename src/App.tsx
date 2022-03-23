@@ -8,7 +8,7 @@ function App() {
   return (
     <UserProvider>
       <div className="App">
-        <Title />
+        <Title title="Typescript and Context API App" />
         <Form />
         <UsersList />
       </div>
