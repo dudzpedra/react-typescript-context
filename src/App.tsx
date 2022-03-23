@@ -1,6 +1,7 @@
 import "./App.css";
 import Form from "./components/Form";
-import Title from "./components/ui/Title";
+import Footer from "./components/ui/Footer";
+import Header from "./components/ui/Header";
 import UsersList from "./components/UsersList";
 import { UserProvider } from "./contexts/users";
 
@@ -8,9 +9,10 @@ function App() {
   return (
     <UserProvider>
       <div className="App">
-        <Title title="Typescript and Context API App" />
+        <Header />
         <Form />
         <UsersList />
+        <Footer />
       </div>
     </UserProvider>
   );
